@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1381</width>
+    <height>695</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPointCloudWidget" name="pointcloudwidget" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1381</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_PCL"/>
+    <addaction name="actionOpenKeypoints"/>
+   </widget>
+   <widget class="QMenu" name="menuProcess">
+    <property name="title">
+     <string>Process</string>
+    </property>
+    <addaction name="actionExtract_Features"/>
+    <addaction name="separator"/>
+    <addaction name="actionISS_Keypoints"/>
+    <addaction name="actionHarris3D_Keypoints"/>
+    <addaction name="actionGP_Keypoints"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionResetCamera"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuProcess"/>
+   <addaction name="menuView"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>44</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpen_PCL"/>
+   <addaction name="separator"/>
+   <addaction name="actionOpenKeypoints"/>
+   <addaction name="separator"/>
+   <addaction name="actionSave_Cloud"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="actionHarris3D_Keypoints"/>
+   <addaction name="separator"/>
+   <addaction name="actionISS_Keypoints"/>
+   <addaction name="separator"/>
+   <addaction name="actionGP_Keypoints"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="actionExtract_Features"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="actionGenerate_Artificial_Cloud"/>
+   <addaction name="separator"/>
+   <addaction name="actionAppend_Training_Features"/>
+   <addaction name="separator"/>
+   <addaction name="actionSet_Training_Target"/>
+   <addaction name="separator"/>
+   <addaction name="actionSave_Training_Features"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+   <addaction name="actionRotateX5Degrees"/>
+   <addaction name="separator"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="minimumSize">
+    <size>
+     <width>250</width>
+     <height>267</height>
+    </size>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QToolBox" name="toolBox">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="page">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>230</width>
+            <height>460</height>
+           </rect>
+          </property>
+          <attribute name="label">
+           <string>Genotype</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>Threshold:      </string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSlider" name="horizontalSlider">
+                 <property name="minimum">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <number>255</number>
+                 </property>
+                 <property name="value">
+                  <number>128</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="textEdit"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>230</width>
+            <height>460</height>
+           </rect>
+          </property>
+          <attribute name="label">
+           <string>Camview</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QComboBox" name="comboBox_RotateAxis">
+               <item>
+                <property name="text">
+                 <string>x</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>y</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>z</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_RotateDegree">
+               <property name="minimum">
+                <number>-180</number>
+               </property>
+               <property name="maximum">
+                <number>180</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_Rotate">
+               <property name="text">
+                <string>Rotate</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QComboBox" name="comboBox_TranslateAxis">
+               <item>
+                <property name="text">
+                 <string>x</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>y</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>z</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_TranslateDistance">
+               <property name="minimum">
+                <number>-99</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_Translate">
+               <property name="text">
+                <string>Translate</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>View Direct:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>x:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>y:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_2"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>z:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_3"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Camera Position:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>x:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_5"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>y:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_4"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>z:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_6"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>View Up Vector:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>x:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_8"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>y:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_7"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>z:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_9"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar_ObjectDetection">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>44</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
+   <addaction name="actionDetection_Set_Scene"/>
+   <addaction name="separator"/>
+   <addaction name="actionDetection_Set_Model"/>
+   <addaction name="separator"/>
+   <addaction name="actionDetection_Detect"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_3">
+   <property name="windowTitle">
+    <string>toolBar_3</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
+  </widget>
+  <action name="actionOpen_PCL">
+   <property name="text">
+    <string>Open Cloud</string>
+   </property>
+  </action>
+  <action name="actionHarris3D_Keypoints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Harris3D Keypoints</string>
+   </property>
+  </action>
+  <action name="actionResetCamera">
+   <property name="text">
+    <string>Reset Camera</string>
+   </property>
+   <property name="toolTip">
+    <string>Reset View Port</string>
+   </property>
+  </action>
+  <action name="actionOpenKeypoints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Open Keypoints</string>
+   </property>
+   <property name="toolTip">
+    <string>open key points file</string>
+   </property>
+  </action>
+  <action name="actionExtract_Features">
+   <property name="text">
+    <string>Extract Features</string>
+   </property>
+  </action>
+  <action name="actionISS_Keypoints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>ISS Keypoints</string>
+   </property>
+  </action>
+  <action name="actionGP_Keypoints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>GP Keypoints</string>
+   </property>
+  </action>
+  <action name="actionGenerate_Artificial_Cloud">
+   <property name="text">
+    <string>Generate Artificial Cloud</string>
+   </property>
+  </action>
+  <action name="actionRotateX5Degrees">
+   <property name="text">
+    <string>RotateX5Degrees</string>
+   </property>
+   <property name="toolTip">
+    <string>Rotate along X axis by 5 degrees</string>
+   </property>
+  </action>
+  <action name="actionSave_Cloud">
+   <property name="text">
+    <string>Save Cloud</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the Current Cloud</string>
+   </property>
+  </action>
+  <action name="actionAppend_Training_Features">
+   <property name="text">
+    <string>Append Training Features</string>
+   </property>
+  </action>
+  <action name="actionSave_Training_Features">
+   <property name="text">
+    <string>Save Training Features</string>
+   </property>
+  </action>
+  <action name="actionSet_Training_Target">
+   <property name="text">
+    <string>Set Training Target</string>
+   </property>
+  </action>
+  <action name="actionDetection_Set_Scene">
+   <property name="text">
+    <string>Set Scene</string>
+   </property>
+  </action>
+  <action name="actionDetection_Set_Model">
+   <property name="text">
+    <string>Set Model</string>
+   </property>
+  </action>
+  <action name="actionDetection_Detect">
+   <property name="text">
+    <string>Detect</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QPointCloudWidget</class>
+   <extends>QWidget</extends>
+   <header>qpointcloudwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>resetCam()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
